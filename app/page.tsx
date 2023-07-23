@@ -9,7 +9,7 @@ import util, {
 
 import Image from 'next/image'
 
-const totalSection = 3;
+const totalSection = 4;
 
 const css = {
     page: "relative h-screen p-1"
@@ -59,10 +59,10 @@ export default function Home() {
     return (
         <main className="bg-gray-50">
             <div className="h-screen w-screen z-50 bg-opacity-0 fixed">
-                {["首頁", "經歷", ""].map((text, cnt) => (
+                {["首頁", "基本資料", "經歷", "聯絡方式"].map((text, cnt) => (
                     <NavigateCard text={text} key={text} className={clsx(
                         "animate-appear",
-                        isInPage(positionYPercentage,cnt+1) || "hidden"
+                        isInPage(positionYPercentage, cnt + 1) || "hidden"
                     )} />
                 ))}
             </div>
@@ -73,13 +73,13 @@ export default function Home() {
                         isInPage(positionYPercentage, 1) ? "fixed" : "hidden"
                     )}>
                         <div style={{
-                            translate: `0 -${positionCalculator(positionYPercentage, 20)}vh`,
+                            translate: `0 -${positionCalculator(positionYPercentage, 20, 1)}vh`,
                             opacity: opacityCalculator(positionYPercentage, 1)
                         }}>
                             <h1 className='text-8xl'>
                                 Milliax
                             </h1>
-                            <p className='text-xl'>
+                            <p className='text-xl text-green-700'>
                                 Keep Promises
                             </p>
                         </div>
@@ -88,6 +88,9 @@ export default function Home() {
                         Description
                     </div>
                 </>}
+            </section>
+            <section className={clsx(css.page,)}>
+
             </section>
             <section className={clsx(css.page,)}>
 
