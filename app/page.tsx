@@ -67,35 +67,87 @@ export default function Home() {
                 ))}
             </div>
             <section className={clsx(css.page, 'flex flex-row')}>
-                {isInPage(positionYPercentage, 1) && <>
-                    <div className={clsx(
-                        'w-1/2 h-full flex flex-col justify-center bg-gradient-to-b from-gray-100 to-gray-50 space-y-5 px-20',
-                        isInPage(positionYPercentage, 1) ? "fixed" : "hidden"
-                    )}>
-                        <div style={{
-                            translate: `0 -${positionCalculator(positionYPercentage, 20, 1)}vh`,
-                            opacity: opacityCalculator(positionYPercentage, 1)
-                        }}>
-                            <h1 className='text-8xl'>
-                                Milliax
-                            </h1>
-                            <p className='text-xl text-green-700'>
-                                Keep Promises
-                            </p>
-                        </div>
+                {/* First Section */}
+                <div className={clsx(
+                    'w-1/2 h-full flex flex-col justify-center bg-gradient-to-b from-gray-100 to-gray-50 space-y-5 px-20',
+                    isInPage(positionYPercentage, 1) ? "absolute" : "hidden"
+                )}>
+                    <div style={{
+                        translate: `0 -${positionCalculator(positionYPercentage, 20, 1)}vh`,
+                        opacity: opacityCalculator(positionYPercentage, 1)
+                    }}>
+                        <h1 className='text-8xl'>
+                            Milliax
+                        </h1>
+                        <p className='text-xl text-green-700'>
+                            Keep Promises | Team Taiwan
+                        </p>
                     </div>
-                    <div className='pl-[50vw] h-full flex flex-col justify-center text-2xl absolute'>
-                        Description
+                </div>
+                <div className='pl-[50vw] h-full flex flex-col justify-center text-2xl absolute'>
+                    Description
+                </div>
+            </section>
+            <section className={clsx(css.page, 'flex flex-row')}>
+                {/* Second Section */}
+                <div className={clsx(
+                    'w-1/2 h-full flex flex-col justify-start space-y-5 px-20 pt-40',
+                )}>
+                    <div className=''>
+                        <h1 className='text-3xl'>
+                            Personality
+                        </h1>
+                        <p>
+
+                        </p>
                     </div>
-                </>}
-            </section>
-            <section className={clsx(css.page,)}>
+                </div>
+                <div className='w-1/2 h-full flex flex-col justify-start pt-52 px-20 text-2xl absolute right-0 bg-gradient-to-b from-gray-50 to-gray-100'>
+                    <h1 className="text-3xl">
+                        Skills
+                    </h1>
+                    <p>
 
+                    </p>
+                </div>
             </section>
-            <section className={clsx(css.page,)}>
+            <section className={clsx(css.page, 'flex flex-row')}>
+                {/* Third Section */}
+                <div className={clsx(
+                    'w-1/2 h-full flex flex-col justify-start py-80 bg-gradient-to-b from-gray-100 to-gray-50 space-y-5 px-20',
+                )}>
+                    <div>
+                        <h1 className='text-7xl'>
+                            Degree
+                        </h1>
+                        <p className='text-xl text-green-700'>
 
+                        </p>
+                    </div>
+                </div>
+                <div className='w-1/2 h-full flex flex-col justify-end py-20 text-2xl absolute right-0'>
+                    <h1 className='text-5xl'>
+                        Experiences
+                    </h1>
+                    <p className='text-xl text-green-700'>
+
+                    </p>
+                </div>
             </section>
-            <section className={clsx(css.page,)}>
+            <section className={clsx(css.page, 'flex flex-row')}>
+                {/* Forth Section */}
+                <div className={clsx(
+                    'w-full h-full flex flex-col justify-center bg-gradient-to-b from-gray-100 to-gray-50 space-y-5 px-20',
+                )}>
+                    <div className='w-full h-full py-20'>
+                        <h1 className='text-6xl '>
+                            Keep In touch
+                        </h1>
+                        <p className='text-xl text-green-700'>
+                            
+                        </p>
+                    </div>
+                </div>
 
             </section>
         </main >
