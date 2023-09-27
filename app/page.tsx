@@ -54,12 +54,14 @@ const NavigateCard = ({ text, className }: { text: string, className?: string })
 
 export default function Home() {
     const [positionYPercentage, setPositionYPercentage] = useState<number>(0);
+    const [width, setWidth] = useState<number>(1024);
     util(totalSection);
 
     const setScrollValue = useCallback(() => {
         const documentElement = document.documentElement;
         const percentageOfPageScrolled = documentElement.scrollTop / documentElement.clientHeight;
         const valueToSet = percentageOfPageScrolled * 100;
+        setWidth(documentElement.clientWidth);
         setPositionYPercentage(valueToSet);
         // console.log("percent: ", valueToSet);
     }, [])
@@ -79,17 +81,25 @@ export default function Home() {
     return (
         <main className="bg-gray-50 select-none">
             <div className="z-50 bg-opacity-0 fixed bottom-0 w-full">
-                {["首頁", "基本資料", "經歷", "聯絡方式"].map((text, cnt) => (
+                {width > 768 && ["首頁", "基本資料", "經歷", "聯絡方式"].map((text, cnt) => (
                     <NavigateCard text={text} key={text} className={clsx(
                         "animate-appear",
                         isInPage(positionYPercentage, cnt + 1) || "hidden"
                     )} />
                 ))}
+                {width > 768 || ["首頁", "基本資料", "基本資料", "經歷", "經歷", "聯絡方式"].map((text, cnt) => (
+                    <NavigateCard text={text} key={cnt} className={clsx(
+                        "animate-appear",
+                        isInPage(positionYPercentage, cnt + 1) || "hidden"
+                    )} />
+                ))}
             </div>
-            <section className={clsx(css.page, 'flex flex-row')}>
+            <section className={clsx(
+                css.page,
+                'flex flex-row')}>
                 {/* First Section */}
                 <div className={clsx(
-                    'w-1/2 h-full flex flex-col justify-center bg-gradient-to-b from-gray-100 to-gray-50 space-y-5 px-20',
+                    'md:w-1/2 w-full h-full flex flex-col justify-center space-y-5 px-20 bg-gradient-to-b from-gray-100 to-gray-50',
                     isInPage(positionYPercentage, 1) ? "absolute" : "hidden"
                 )}>
                     <div style={{
@@ -118,15 +128,14 @@ export default function Home() {
                     </div>
                 </div>
             </section>
-            <section className={clsx(css.page, 'flex flex-row')}>
+            <section className={clsx('flex md:flex-row flex-col md:h-screen h-[200vh]')}>
                 {/* Second Section */}
                 <div className={clsx(
-                    'w-1/2 h-full flex flex-col justify-start space-y-5 px-20 pt-40',
+                    'md:w-1/2 w-full md:h-full h-screen flex flex-col justify-start space-y-5 px-20 pt-40 z-10',
                 )}>
                     <div className=''>
                         <h1 className={clsx(
                             'text-4xl font-bold',
-                            // (percentageInPage(positionYPercentage, 2) > -20 && percentageInPage(positionYPercentage,2) < 50) ? "sticky" : ""
                         )}
                             style={{
                                 translate: `-${fadeInCalculator(positionYPercentage, 2, 50, 20)}vh 0`
@@ -134,7 +143,7 @@ export default function Home() {
                         >
                             Characteristics
                         </h1>
-                        <div className='pt-32 space-y-5'
+                        <div className='md:pt-32 pt-12 space-y-5'
                             style={{ opacity: 1 - fadeInCalculator(positionYPercentage, 2, 20, 10) / 100 }}
                         >
                             <p>ESFJ？</p>
@@ -145,24 +154,27 @@ export default function Home() {
                     </div>
                 </div>
                 <div className={clsx(
-                    'w-1/2 h-full flex flex-col justify-start pt-52 px-20 text-2xl right-0 bg-gradient-to-b from-gray-50 to-gray-100',
-                    (isInPage(positionYPercentage, 2) || isInPage(positionYPercentage, 1)) ? "fixed top-0" : "absolute"
+                    'md:w-1/2 w-full md:h-full h-screen flex flex-col justify-start md:pt-52 pt-24 px-20 text-2xl right-0 bg-gradient-to-b from-gray-50 to-gray-100',
+                    (width > 768) ?
+                        isInPage(positionYPercentage, 3) ? "fixed top-0" : "absolute"
+                        :
+                        isInPage(positionYPercentage, 2) ? "fixed top-0" : "absolute"
+                    ,
                 )}
                     style={{
-                        translate: `0 -${positionCalculator2(positionYPercentage, 30, 20, 2)}vh`,
-                        opacity: fadeInCalculator(positionYPercentage, 2, -30, 20) / 100
+                        translate: `0 -${positionCalculator2(positionYPercentage, 20, 10, (width > 768) ? 2 : 3)}vh`,
+                        opacity: fadeInCalculator(positionYPercentage, (width > 768) ? 2 : 3, 10, 50) / 100
                     }}>
                     <h1 className="text-3xl font-bold"
                         style={{
-                            translate: `${fadeInCalculator(positionYPercentage, 2, 30)}vh 0`
+                            translate: `${fadeInCalculator(positionYPercentage, (width > 768) ? 2 : 3, 40)}vh 0`
                         }}>
                         Skills
                     </h1>
                     <div className={clsx(
                         'relative h-full w-full ml-10 mb-20 mt-5 rounded text-7xl',
-                        // ' bg-red-100'.replace('', ' [&>*]')
                     )}
-                        style={{ opacity: 1 - fadeInCalculator(positionYPercentage, 2, 5, 5) / 100 }}
+                        style={{ opacity: 1 - fadeInCalculator(positionYPercentage, (width > 768) ? 2 : 3, 10, 5) / 100 }}
                     >
                         <div className='absolute top-0 right-1/3'>
                             <SiReact />
@@ -182,10 +194,10 @@ export default function Home() {
                     </div>
                 </div>
             </section>
-            <section className={clsx(css.page, 'flex flex-row')}>
+            <section className={clsx('flex md:flex-row flex-col h-[200vh] md:h-screen')}>
                 {/* Third Section */}
                 <div className={clsx(
-                    'w-1/2 h-full flex flex-col justify-start py-80 bg-gradient-to-b from-gray-100 to-gray-50 space-y-5 px-20',
+                    'md:w-1/2 w-full md:h-full h-screen flex flex-col justify-start py-80 bg-gradient-to-b from-gray-100 to-gray-50 space-y-5 px-20',
                 )}>
                     <div className=''>
                         <h1 className='text-7xl'>
@@ -195,7 +207,7 @@ export default function Home() {
                             'p-10 flex flex-row justify-end'
                         )}>
                             <div className={clsx(
-                                'w-[50vmin] h-[50vmin] grid grid-cols-2 gap-5 text-lg',
+                                'w-[50vmin] h-[50vmin] grid grid-cols-2 gap-5 text-lg md:grid-cols-1',
                             )}>
                                 <div className='card' style={{ lineBreak: 'strict' }}>
                                     陽明交通大學<br />
@@ -216,10 +228,10 @@ export default function Home() {
                         </div>
                     </div>
                 </div>
-                <div className='w-1/2 h-full flex flex-col justify-end pb-32 text-2xl absolute right-0 px-20 space-y-5'
+                <div className='md:w-1/2 w-full md:h-full h-screen flex flex-col justify-end pb-32 text-2xl absolute right-0 px-20 space-y-5 z-10'
                     style={{
-                        opacity: 1 - fadeInCalculator(positionYPercentage, 3, 10, 10) / 100,
-                        translate: `-${fadeInCalculator(positionYPercentage, 3, 30)}vh 0`
+                        opacity: 1 - fadeInCalculator(positionYPercentage, (width > 768) ? 3 : 5, 0, 10) / 100,
+                        translate: `-${fadeInCalculator(positionYPercentage, (width > 768) ? 3 : 5, 20)}vh 0`
                     }}
                 >
                     <h1 className='text-5xl'>
