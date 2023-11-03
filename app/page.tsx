@@ -293,10 +293,10 @@ export default function Home() {
                 </div>
                 {/* <div className='md:w-1/2 w-full h-screen flex flex-col justify-end pb-32 text-2xl px-20 space-y-5 z-10 ' */}
                 <div className='md:w-1/2 w-full h-screen flex flex-col justify-end pb-32 md:right-0 px-20 space-y-5 z-10'
-                    // style={{
-                    //     opacity: 1 - fadeInCalculator(positionYPercentage, (width > 768) ? 3 : 5, 0, 10) / 100,
-                    //     translate: `-${fadeInCalculator(positionYPercentage, (width > 768) ? 3 : 5, 20)}vh 0`
-                    // }}
+                    style={{
+                        opacity: 1 - fadeInCalculator(positionYPercentage, (width > 768) ? 3 : 5, 0, 10) / 100,
+                        translate: `-${fadeInCalculator(positionYPercentage, (width > 768) ? 3 : 5, 20)}vh 0`
+                    }}
                 >
                     <h1 className='text-5xl'>
                         Projects
