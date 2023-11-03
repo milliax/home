@@ -27,7 +27,7 @@ body {
 } */
 
 .card{ 
-    @apply bg-slate-100 hover:bg-slate-200 rounded-lg hover:shadow-lg shadow-sm px-5 py-8 text-center break-words w-full flex flex-col justify-center;
+    @apply bg-slate-100 hover:bg-slate-200 rounded-lg hover:shadow-lg shadow-sm px-5 py-8 text-center break-words w-full flex flex-col justify-center text-sm sm:text-base;
 }
 
 .hyperlink{

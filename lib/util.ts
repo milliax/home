@@ -5,7 +5,7 @@ let totalSection = 1;
 
 export const isInPage = (position: number, page: number): boolean => {
     const percentage = percentageInPage(position, page);
-    if (percentage < 100 && percentage >= 0) {
+    if (percentage < 150 && percentage >= -50) {
         return true;
     }
     return false;
@@ -42,8 +42,8 @@ export const fadeInCalculator = (position: number, page: number, padding?: numbe
     // 100 to 0
     const value = 100 - (Math.min(percentInPage + (padding ?? 0), (speed ?? 30)) / (speed ?? 30) * 100);
 
-    process.env.NODE_ENV === "development" && console.log("percentage in page: ", percentInPage);
-    process.env.NODE_ENV === "development" && console.log("translate: ", value);
+    // process.env.NODE_ENV === "development" && console.log("percentage in page: ", percentInPage);
+    // process.env.NODE_ENV === "development" && console.log("translate: ", value);
     return value;
 }
 
