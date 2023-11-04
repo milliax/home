@@ -21,7 +21,8 @@ import {
     SiNextdotjs,
     SiReact,
     SiTypescript,
-    SiTailwindcss
+    SiTailwindcss,
+    SiPython
 } from 'react-icons/si'
 
 import {
@@ -112,7 +113,7 @@ export default function Home() {
         <main className="bg-gray-50 select-none">
             {process.env.NODE_ENV === "development" && (
                 <div className="w-40 top-0 h-20 bg-red-100 fixed z-50">
-                    <button onClick={()=>{
+                    <button onClick={() => {
                         console.log("positionYPercentage: ", positionYPercentage);
                     }}>顯示頁數</button>
                 </div>
@@ -138,18 +139,6 @@ export default function Home() {
                         "animate-appear",
                         navigationText === "聯絡方式" || "hidden"
                     )} />
-                {/* {width > 768 && ["首頁", "基本資料", "經歷", "聯絡方式"].map((text, cnt) => (
-                    <NavigateCard text={text} key={text} className={clsx(
-                        "animate-appear",
-                        isInPage(positionYPercentage, cnt + 1) || "hidden"
-                    )} />
-                ))} */}
-                {/* {width > 768 || ["首頁", "基本資料", "基本資料", "經歷", "經歷", "聯絡方式"].map((text, cnt) => (
-                    <NavigateCard text={text} key={cnt} className={clsx(
-                        "animate-appear",
-                        isInPage(positionYPercentage, cnt + 1) || "hidden"
-                    )} />
-                ))} */}
             </div>
             <section className={clsx(
                 css.page,
@@ -213,11 +202,11 @@ export default function Home() {
                     <div id="基本資料" ref={infoRef} className="absolute top-1/2" />
                 </div>
                 <div className={clsx(
-                    'md:w-1/2 w-full md:h-full h-screen flex flex-col justify-start md:pt-52 pt-24 px-20 text-2xl right-0 bg-gradient-to-b from-gray-50 to-gray-100',
+                    'md:w-1/2 w-full md:h-full h-screen flex flex-col justify-start md:pt-52 pt-24 md:px-20 px-5 sm:px-16 text-2xl right-0 bg-gradient-to-b from-gray-50 to-gray-100',
                     (width > 768) ?
-                        isInPage(positionYPercentage, 3) ? "fixed top-0" : "absolute"
+                        isInPage(positionYPercentage, 3) ? "fixed top-0" : ""
                         :
-                        isInPage(positionYPercentage, 2) ? "fixed top-0" : "absolute"
+                        isInPage(positionYPercentage, 2) ? "fixed top-0" : ""
                     ,
                 )}
                     style={{
@@ -225,8 +214,11 @@ export default function Home() {
                         opacity: fadeInCalculator(positionYPercentage, (width > 768) ? 2 : 3, 10, 50) / 100
                     }}>
                     <h1 className={clsx(
-                        "text-3xl font-bold block",
-                        skillRef.current && skillRef.current.getBoundingClientRect().left >= window.innerWidth && "hidden"
+                        "text-3xl font-bold",
+                        (width > 768) ?
+                            isInPage(positionYPercentage, 2) ? "block" : "hidden"
+                            :
+                            isInPage(positionYPercentage, 3) ? "block" : "hidden"
                     )}
                         style={{
                             translate: `${fadeInCalculator(positionYPercentage, (width > 768) ? 2 : 3, 60)}vh 0`,
@@ -234,7 +226,7 @@ export default function Home() {
                         Skills
                     </h1>
                     <div className={clsx(
-                        'relative h-full w-full ml-10 mb-20 mt-5 rounded text-7xl',
+                        'relative h-full w-full md:ml-10 ml-0 mb-20 mt-0 md:mt-5 rounded text-7xl ',
                     )}
                         style={{ opacity: 1 - fadeInCalculator(positionYPercentage, (width > 768) ? 2 : 3, 30, 5) / 100 }}
                     >
@@ -244,7 +236,7 @@ export default function Home() {
                         <div className='absolute left-0 top-1/2'>
                             <SiNextdotjs />
                         </div>
-                        <div className='absolute left-0 bottom-0'>
+                        <div className='absolute left-[5%] bottom-[10%]'>
                             <SiTailwindcss />
                         </div>
                         <div className='absolute top-1/2 right-1/4'>
@@ -252,6 +244,9 @@ export default function Home() {
                         </div>
                         <div className='absolute top-2/3 right-0'>
                             <SiTypescript />
+                        </div>
+                        <div className='absolute right-[20%] top-[30%]'>
+                            <SiPython />
                         </div>
                     </div>
                 </div>
@@ -333,7 +328,7 @@ export default function Home() {
 
                             <h2>
                                 email:
-                                <br className='sm:hidden block'/>
+                                <br className='sm:hidden block' />
                                 <Link href="mailto:milliax.mg11@nycu.edu.tw" className='hyperlink'>
                                     milliax.mg11@nycu.edu.tw
                                 </Link>
