@@ -350,6 +350,11 @@ export default function Home() {
                                         <Image src="/logos/instagram.png" alt="Icon of Facebook" fill />
                                     </div>
                                 </Link>
+                                <Link href="https://blog.milliax.me">
+                                    <div className='w-16 sm:w-20 aspect-square relative'>
+                                        <Image src="https://blog.milliax.me/static/images/logo.png" alt="Icon of my blog" fill/>
+                                    </div>
+                                </Link>
                             </div>
                             <h2>My Place: Somewhere In Brooklyn</h2>
                         </div>
