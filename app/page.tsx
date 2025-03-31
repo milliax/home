@@ -118,6 +118,7 @@ export default function Home() {
                     }}>顯示頁數</button>
                 </div>
             )}
+
             <div className="z-50 bg-opacity-0 fixed bottom-0 w-full">
                 <NavigateCard text="首頁"
                     className={clsx(
@@ -140,6 +141,7 @@ export default function Home() {
                         navigationText === "聯絡方式" || "hidden"
                     )} />
             </div>
+
             <section className={clsx(
                 css.page,
                 'flex flex-row')}>
@@ -156,7 +158,8 @@ export default function Home() {
                             Milliax
                         </h1>
                         <p className='text-xl text-[#1B9431]'>
-                            Keep Promises | Team Taiwan
+                            {/* Keep Promises | Team Taiwan */}
+                            |Team Taiwan
                         </p>
                         <div id="首頁" ref={frontRef} className="absolute top-1/2" />
                     </div>
@@ -168,13 +171,14 @@ export default function Home() {
                         }}
                     >
                         原本我的英文名字是 Max<br />
-                        但這樣太普通了不像我<br />
+                        但跟太多人撞名了<br />
                         所以我自己在中間加一些字<br />
                         最後變成 Milliax<br />
                         但有時候會變形成 Milliacs<br />
                     </div>
                 </div>
             </section>
+
             <section className={clsx('flex md:flex-row flex-col md:h-screen h-[200vh]')}>
                 {/* Second Section */}
                 <div className={clsx(
@@ -193,9 +197,11 @@ export default function Home() {
                         <div className='md:pt-32 pt-12 space-y-5'
                             style={{ opacity: 1 - fadeInCalculator(positionYPercentage, 2, 20, 10) / 100 }}
                         >
-                            <p>ESFJ？</p>
-                            <p>日劇、動漫追好追滿</p>
-                            <p>3C 控 、 看到可以過得更舒適的東西就會控制不住自己</p>
+                            <p>ESFP？</p>
+                            <p>日劇超喜歡</p>
+                            <p>3C 控 、 看到有用的新東西就會控制不住自己</p>
+                            <p>喜歡到處亂跑 跑到從來沒有去過的地方</p>
+                            <p>有時間&很煩的時候 會一直游泳</p>
                             <p>Taylor Swift - Back To December</p>
                         </div>
                     </div>
@@ -289,8 +295,8 @@ export default function Home() {
                 {/* <div className='md:w-1/2 w-full h-screen flex flex-col justify-end pb-32 text-2xl px-20 space-y-5 z-10 ' */}
                 <div className='md:w-1/2 w-full h-screen flex flex-col justify-end pb-32 md:right-0 px-20 space-y-5 z-10'
                     style={{
-                        opacity: 1 - fadeInCalculator(positionYPercentage, (width > 768) ? 3 : 5, 0, 10) / 100,
-                        translate: `-${fadeInCalculator(positionYPercentage, (width > 768) ? 3 : 5, 20)}vh 0`
+                        opacity: 1 - fadeInCalculator((positionYPercentage + 25), (width > 768) ? 3 : 5, 0, 10) / 100,
+                        translate: `-${fadeInCalculator((positionYPercentage + 20), (width > 768) ? 3 : 5, 20)}vh 0`
                     }}
                 >
                     <h1 className='text-5xl'>
@@ -298,16 +304,27 @@ export default function Home() {
                     </h1>
                     <div className='text-base md:text-xl'>
                         <li>
-                            Guider
+                            睡眠偵測系統
                         </li>
                         <li>
-                            NYCU IEM SA website
+                            Euclid Lens Ordering System
+                        </li>
+                        <li>
+                            Guider 高中生引路人
+                        </li>
+                        <li>
+                            NYCU IEMSA website
                         </li>
                         <li>
                             tnfsh lunch ordering
                         </li>
                         <li>
-                            improving database via crypto. (TANET)
+                            2020 青年黑客松 - ESG地圖
+                            {/* <br /> */}
+                            {/* <span className='text-sm'>Team: 3rd Place</span> */}
+                        </li>
+                        <li>
+                            improving database via crypto and distributed database system. (TANET)
                         </li>
                         <li>
                             Automatic Curtain Works With Google
@@ -352,7 +369,7 @@ export default function Home() {
                                 </Link>
                                 <Link href="https://blog.milliax.me">
                                     <div className='w-16 sm:w-20 aspect-square relative'>
-                                        <Image src="https://blog.milliax.me/static/images/logo.png" alt="Icon of my blog" fill/>
+                                        <Image src="https://blog.milliax.me/static/images/logo.png" alt="Icon of my blog" fill />
                                     </div>
                                 </Link>
                             </div>
